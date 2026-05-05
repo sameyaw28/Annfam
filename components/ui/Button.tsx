@@ -6,19 +6,18 @@ type Size = "md" | "lg";
 
 const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold " +
-  "transition duration-150 ease-out " +
   "hover:scale-[1.02] active:scale-[0.98] " +
   "focus-visible:outline-none focus-visible:shadow-ring " +
   "disabled:opacity-60 disabled:pointer-events-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-brand text-white shadow-sm hover:bg-brand-hover hover:shadow-md",
+    "bg-brand text-white shadow-sm transition duration-150 ease-out hover:bg-brand-hover hover:shadow-md",
   secondary:
-    "bg-surface text-ink border border-line hover:border-brand hover:text-brand",
+    "bg-surface text-ink border border-line transition duration-150 ease-out hover:border-brand hover:text-brand",
   accent:
-    "bg-accent text-white text-base font-semibold shadow-sm hover:bg-accent-hover hover:shadow-cta",
-  ghost: "bg-transparent text-ink hover:bg-brand-soft",
+    "bg-accent text-white text-base font-semibold shadow-sm transition duration-200 ease-spring hover:bg-accent-hover hover:shadow-cta",
+  ghost: "bg-transparent text-ink transition duration-150 ease-out hover:bg-brand-soft",
 };
 
 const sizes: Record<Size, string> = {

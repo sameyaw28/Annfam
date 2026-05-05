@@ -138,7 +138,7 @@ function HeroIllustration() {
       </div>
 
       <div className="absolute -right-4 bottom-12 hidden md:flex items-center gap-3 rounded-2xl border border-line bg-surface p-3 pr-5 shadow-lg">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-accent-soft text-accent">
+        <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-brand">
           <HeartHandshake size={20} />
         </span>
         <div className="text-xs">

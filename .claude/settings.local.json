@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(git stash *)",
+      "Read(//Users/sethameyaw/Desktop/ANNFAM FOUNDATION /**)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3001/donate)"
+    ]
+  }
+}
