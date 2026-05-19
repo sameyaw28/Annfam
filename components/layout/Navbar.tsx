@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -40,12 +41,14 @@ export function Navbar() {
           href="/"
           className="flex items-center gap-2 font-display text-xl tracking-display"
         >
-          <span
-            aria-hidden
-            className="grid h-9 w-9 place-items-center rounded-xl bg-brand-gradient text-white text-sm font-bold shadow-md"
-          >
-            A
-          </span>
+          <Image
+            src="/logo.png"
+            alt="ANNFAM Foundation"
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 rounded-xl object-cover shadow-md"
+          />
           <span className="font-semibold">ANNFAM</span>
         </Link>
 
