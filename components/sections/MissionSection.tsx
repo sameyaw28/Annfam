@@ -4,9 +4,10 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 
 const principles = [
-  "Local leadership over imported solutions.",
-  "Long-term partnerships, not one-off grants.",
-  "Transparency in every dollar deployed.",
+  "Integrity in everything we do.",
+  "Dignity and respect for every person we serve.",
+  "Collaboration with communities, partners, and government.",
+  "Service that creates lasting, measurable change.",
 ];
 
 export function MissionSection() {
@@ -19,12 +20,20 @@ export function MissionSection() {
               Mission
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl">
-              To unlock potential where opportunity is scarce.
+              Bridging the gap to a more equitable society.
             </h2>
             <p className="mt-7 text-base md:text-lg leading-body text-ink-muted">
-              We back the people closest to the problem with the funding,
-              tools, and time they need to build durable change in their own
-              communities.
+              We are committed to bridging the gap between the less endowed
+              and the privileged members of our society. Every person deserves
+              access to education, healthcare, and other essential services —
+              regardless of their socioeconomic background.
+            </p>
+            <p className="mt-5 text-base md:text-lg leading-body text-ink-muted">
+              Through partnerships with other organizations, businesses, and
+              government agencies, we empower individuals and communities,
+              promote social justice, and address systemic inequalities —
+              creating lasting change for those who have been historically
+              marginalized.
             </p>
 
             <ul className="mt-9 space-y-4">
@@ -70,11 +79,11 @@ function MissionVisual() {
           </span>
           <div>
             <p className="font-display text-3xl md:text-4xl tracking-display">
-              Direction over destination.
+              Together, a brighter future.
             </p>
             <p className="mt-4 max-w-sm text-sm md:text-base text-white/85 leading-body">
-              We follow the leadership of those closest to the work — and stay
-              long enough to see the change take root.
+              Empowering individuals and communities — promoting social
+              justice, addressing systemic inequalities, and improving lives.
             </p>
           </div>
         </div>

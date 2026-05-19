@@ -21,20 +21,35 @@ const channels = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@annfam.org",
-    href: "mailto:hello@annfam.org",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (415) 555-0142",
-    href: "tel:+14155550142",
+    value: "annfamfoundation@gmail.com",
+    href: "mailto:annfamfoundation@gmail.com",
   },
   {
     icon: MapPin,
     label: "Office",
-    value: "548 Market Street, Suite 220\nSan Francisco, CA 94104",
-    href: "https://maps.google.com/?q=548+Market+Street+San+Francisco",
+    value: "Gausu Extension\nObuasi, Ghana",
+    href: "https://maps.google.com/?q=Gausu+Extension+Obuasi+Ghana",
+  },
+];
+
+const phoneContacts = [
+  {
+    role: "Board Chairman",
+    name: "Mr. Thomas Kwaw Annan",
+    display: "+233 24 474 7504",
+    href: "tel:+233244747504",
+  },
+  {
+    role: "CEO",
+    name: "Dr. Esther Ehu Annan",
+    display: "+233 53 565 2254",
+    href: "tel:+233535652254",
+  },
+  {
+    role: "Deputy CEO",
+    name: "Ing. Samuel Agyapong",
+    display: "+233 55 286 1774",
+    href: "tel:+233552861774",
   },
 ];
 
@@ -185,6 +200,35 @@ export function ContactSection() {
                       </a>
                     </li>
                   ))}
+                  <li>
+                    <div className="flex items-start gap-4">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-brand">
+                        <Phone size={18} />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-ink-muted">
+                          Phone
+                        </span>
+                        <ul className="mt-2 space-y-3">
+                          {phoneContacts.map((p) => (
+                            <li key={p.href}>
+                              <a href={p.href} className="group block">
+                                <span className="block text-xs text-ink-muted">
+                                  {p.role}
+                                </span>
+                                <span className="mt-0.5 block text-sm font-medium leading-snug text-ink transition-colors duration-150 group-hover:text-brand">
+                                  {p.name}
+                                </span>
+                                <span className="mt-0.5 block text-sm text-ink-muted transition-colors duration-150 group-hover:text-brand">
+                                  {p.display}
+                                </span>
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
                 </ul>
 
                 <div className="mt-7 flex items-start gap-3 rounded-xl bg-brand-soft p-4 text-sm text-ink">

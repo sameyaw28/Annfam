@@ -17,17 +17,20 @@ export function VisionSection() {
               Vision
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl">
-              A world where every community shapes its own future.
+              Equal opportunity to unearth every God-given potential.
             </h2>
             <p className="mt-7 text-base md:text-lg leading-body text-ink-muted">
-              We&apos;re working toward a model of philanthropy that retires
-              itself — where the communities we partner with no longer need
-              outside funding to lead the change they want to see.
+              We envision a world where the less endowed and the vulnerable in
+              society are given equal opportunities — where the gap between the
+              less endowed and the privileged is bridged, and every individual
+              has access to basic needs such as education, healthcare, and
+              food.
             </p>
             <p className="mt-5 text-base md:text-lg leading-body text-ink-muted">
-              By 2030, our goal is to support one million lives across twelve
-              countries through programs designed and run entirely by local
-              leadership.
+              Through our programs and initiatives, we aim to create equal
+              opportunities for all individuals regardless of their
+              socio-economic status — committed to making a positive impact and
+              ending the cycle of poverty.
             </p>
           </Reveal>
         </div>
@@ -59,15 +62,15 @@ function VisionVisual() {
 
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand">
-              By 2030
+              Our promise
             </p>
             <p className="mt-3 font-display text-3xl md:text-4xl tracking-display text-ink">
-              1M lives.
+              Equal access.
               <br />
-              12 countries.
+              Full potential.
               <br />
               <span className="bg-brand-gradient bg-clip-text text-transparent">
-                Locally led.
+                For all.
               </span>
             </p>
           </div>

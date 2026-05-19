@@ -3,10 +3,10 @@ import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 
 const milestones = [
-  { year: "2014", text: "Founded with the first scholarship cohort of 12 students." },
-  { year: "2017", text: "Launched the first international program in Lagos." },
-  { year: "2020", text: "Crossed 100 community partnerships across four continents." },
-  { year: "2024", text: "$28M deployed, 240k+ lives reached, fully transparent." },
+  { year: "1975", text: "A Form 1 student passes the Common Entrance Exam as the only successful candidate — but cannot afford secondary school." },
+  { year: "1977", text: "Master Danso intervenes, opening the door to Obuasi Secondary Technical School." },
+  { year: "O-Level", text: "A Government Scholarship sees the five-year course through to completion." },
+  { year: "Today", text: "ANNFAM Foundation pays that helping hand forward — for the next child waiting." },
 ];
 
 export function StorySection() {
@@ -19,26 +19,35 @@ export function StorySection() {
               Our story
             </p>
             <h2 className="mt-4 text-3xl md:text-4xl lg:text-5xl">
-              How it began.
+              The helping hand that started it all.
             </h2>
             <div className="mt-7 space-y-5 text-base md:text-lg leading-body text-ink-muted">
               <p>
-                In 2014, two friends — Ada and Fola — pooled four thousand
-                dollars to fund a single after-school reading program in their
-                hometown. They had no plan to start a foundation. They just
-                wanted the kids on their block to have books.
+                The central figure in the ANNFAM story isn&apos;t an Annan at
+                all — it&apos;s the late Mr. Danso, headmaster of St.
+                Joseph&apos;s Middle School (B Stream). In 1975, a Form 1
+                student there passed the Common Entrance Examination as the
+                only successful candidate at the school. His single mother
+                could not afford to send him on to secondary school. He sat
+                out that year. And the next.
               </p>
               <p>
-                Eleven years later, ANNFAM Foundation supports 84 community-led
-                programs across four continents. The work has scaled. The
-                principle hasn&apos;t: we still listen first, fund what local
-                leaders propose, and measure success only in the lives changed.
+                In 1977 he succeeded again, with a very good score, and faced
+                the same wall. Master Danso had been watching quietly. One day
+                he called the boy into his office and said,{" "}
+                <span className="text-ink">
+                  &ldquo;Thomas, I am going to send you to Obuasi Secondary
+                  Technical School to talk to the headmaster about your case
+                  — perhaps he can offer some assistance.&rdquo;
+                </span>
               </p>
               <p>
-                We don&apos;t put our logo on classroom walls. We don&apos;t
-                fly in for ribbon cuttings. The communities we partner with do
-                the work. We just make sure they have what they need to keep
-                doing it.
+                The headmaster, Mr. B. E. Godwyll, was so moved that he offered
+                admission to Form 1 and arranged a Government Scholarship for
+                the full five-year course. That single intervention — one
+                teacher who refused to let a child slip through the cracks — is
+                the reason ANNFAM Foundation exists today. We give the same
+                helping hand to the next child waiting.
               </p>
             </div>
           </Reveal>
@@ -87,10 +96,10 @@ function StoryVisual() {
 
         <div className="absolute left-6 right-6 bottom-6 text-white">
           <p className="text-xs uppercase tracking-[0.18em] opacity-80">
-            Founding · 2014
+            Our origin · 1977
           </p>
           <p className="mt-2 font-display text-2xl">
-            From one program on one block.
+            One teacher&apos;s quiet intervention.
           </p>
         </div>
       </div>
