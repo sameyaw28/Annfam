@@ -16,12 +16,11 @@ export const team: TeamMember[] = [
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=750&fit=crop",
   },
   {
-    slug: "marcus-t",
-    name: "Marcus Tate",
-    role: "Director of Programs",
-    bio: "Designs the partnership model that powers every program we fund.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=750&fit=crop",
+    slug: "samuel-a",
+    name: "Agyapong Akwasi Samuel",
+    role: "Deputy CEO",
+    bio: "The bridge between strategy and execution — making sure our vision reaches every community we serve.",
+    image: "/uploads/deputy-ceo.jpg",
   },
   {
     slug: "linh-v",

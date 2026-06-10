@@ -3,6 +3,7 @@ import { AboutHeroSection } from "@/components/sections/AboutHeroSection";
 import { MissionSection } from "@/components/sections/MissionSection";
 import { VisionSection } from "@/components/sections/VisionSection";
 import { StorySection } from "@/components/sections/StorySection";
+import { DeputyCeoSection } from "@/components/sections/DeputyCeoSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <MissionSection />
       <VisionSection />
       <StorySection />
+      <DeputyCeoSection />
       <TeamSection />
     </>
   );
