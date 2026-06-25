@@ -8,12 +8,11 @@ export type TeamMember = {
 
 export const team: TeamMember[] = [
   {
-    slug: "adaeze-n",
-    name: "Adaeze Nwosu",
-    role: "Executive Director",
-    bio: "Twenty years building community-led programs across West Africa.",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=750&fit=crop",
+    slug: "esther-a",
+    name: "Dr. Esther Ehu Annan",
+    role: "Chief Executive Officer",
+    bio: "Leads ANNFAM Foundation's mission to empower lives through education, mentorship, and community outreach.",
+    image: "/uploads/ceo.jpg",
   },
   {
     slug: "samuel-a",

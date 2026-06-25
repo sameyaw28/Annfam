@@ -1,6 +1,7 @@
 import { ArrowRight, HeartHandshake } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { HeroSlider } from "@/components/ui/HeroSlider";
 
 export function HeroSection() {
   return (
@@ -103,29 +104,7 @@ function HeroIllustration() {
         className="absolute -inset-6 -z-10 rounded-[3rem] bg-brand-gradient opacity-20 blur-3xl"
       />
 
-      <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] border border-line bg-surface shadow-lg">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200&q=80')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent" />
-        <div className="absolute inset-0 mix-blend-multiply bg-brand/10" />
-
-        <div className="absolute left-6 right-6 bottom-6 flex items-end justify-between gap-4">
-          <div className="text-white">
-            <p className="text-xs uppercase tracking-[0.18em] opacity-80">
-              In the field
-            </p>
-            <p className="mt-1 font-display text-xl">Lagos · Nigeria</p>
-          </div>
-          <div className="rounded-full bg-white/95 px-4 py-2 text-xs font-semibold text-ink shadow-md">
-            Live Program
-          </div>
-        </div>
-      </div>
+      <HeroSlider />
 
       <div className="absolute -left-6 top-10 hidden md:block rounded-2xl border border-line bg-surface p-4 shadow-lg max-w-[200px]">
         <p className="text-xs uppercase tracking-[0.14em] text-brand font-semibold">
