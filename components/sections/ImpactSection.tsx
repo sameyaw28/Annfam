@@ -5,7 +5,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 const stats = [
   { value: "240K+", label: "Lives reached" },
-  { value: "$28M", label: "Funds deployed" },
+  { value: "₵28M", label: "Funds deployed" },
   { value: "84", label: "Communities served" },
   { value: "11", label: "Years on the ground" },
 ];

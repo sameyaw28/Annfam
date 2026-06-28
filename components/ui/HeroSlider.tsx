@@ -11,23 +11,23 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1000&h=1250&fit=crop&q=80",
-    eyebrow: "In the field",
+    src: "/uploads/slide-1.jpg",
+    eyebrow: "Our team",
     caption: "Obuasi · Ghana",
   },
   {
-    src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=1000&h=1250&fit=crop&crop=faces&q=80",
-    eyebrow: "Mentorship",
-    caption: "Obuasi · Ghana",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1000&h=1250&fit=crop&crop=faces&q=80",
+    src: "/uploads/slide-2.jpg",
     eyebrow: "Community",
     caption: "Obuasi · Ghana",
   },
   {
-    src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=1000&h=1250&fit=crop&crop=faces&q=80",
-    eyebrow: "Education",
+    src: "/uploads/slide-3.jpg",
+    eyebrow: "School outreach",
+    caption: "Obuasi · Ghana",
+  },
+  {
+    src: "/uploads/slide-4.jpg",
+    eyebrow: "In the field",
     caption: "Obuasi · Ghana",
   },
 ];

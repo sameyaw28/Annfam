@@ -8,7 +8,7 @@ import { MoreWaysSection } from "@/components/sections/MoreWaysSection";
 export const metadata: Metadata = {
   title: "Donate — ANNFAM Foundation",
   description:
-    "Your gift funds community-led programs in education, health, and sustainability. Tax-deductible, transparently reported, and matched dollar-for-dollar through June 30.",
+    "Your gift funds community-led programs in education, health, and sustainability. Pay with Mobile Money or card, transparently reported, and matched cedi-for-cedi through June 30.",
 };
 
 export default function DonatePage() {

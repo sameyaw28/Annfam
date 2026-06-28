@@ -6,25 +6,25 @@ import { Reveal } from "@/components/ui/Reveal";
 
 const options = [
   {
-    amount: "$25",
+    amount: "₵50",
     icon: BookOpen,
     title: "A term of textbooks",
     body: "Outfits one Lighthouse Scholar with the books and supplies they need to start the term.",
   },
   {
-    amount: "$60",
+    amount: "₵100",
     icon: Droplets,
     title: "A month of clean water",
     body: "Funds maintenance and chlorination for one Clear Waters well — serving roughly 200 people.",
   },
   {
-    amount: "$120",
+    amount: "₵200",
     icon: HeartPulse,
     title: "A safe delivery",
     body: "Covers prenatal care and a midwife-attended birth through the Safe Mothers Network.",
   },
   {
-    amount: "$250",
+    amount: "₵500",
     icon: Sprout,
     title: "A farmer's full season",
     body: "Seeds, tools, and training so a Rooted Farms cooperative member can triple their yield.",
