@@ -35,7 +35,7 @@ export function DonateHeroSection() {
             className="animate-hero-in mx-auto mt-7 max-w-2xl text-base md:text-lg leading-body text-ink-muted"
             style={{ animationDelay: "200ms" }}
           >
-            Every dollar funds a community-led program — a scholarship, a clean
+            Every cedi funds a community-led program — a scholarship, a clean
             well, a midwife&apos;s training. No overhead games. No vague
             promises. Just direct, measurable change.
           </p>

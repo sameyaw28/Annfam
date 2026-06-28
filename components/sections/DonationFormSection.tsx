@@ -1,31 +1,83 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, Heart, Lock } from "lucide-react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, Heart, Loader2, Lock, Smartphone, CreditCard } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/cn";
 
-const PRESETS = [25, 60, 120, 250] as const;
+const PRESETS = [50, 100, 200, 500] as const;
 type Frequency = "once" | "monthly";
+
+type Verified = { amount: number; name: string };
 
 export function DonationFormSection() {
   const [frequency, setFrequency] = useState<Frequency>("once");
-  const [preset, setPreset] = useState<number | null>(60);
+  const [preset, setPreset] = useState<number | null>(100);
   const [custom, setCustom] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [verifying, setVerifying] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [verified, setVerified] = useState<Verified | null>(null);
 
   const amount = preset ?? Number(custom || 0);
-  const valid = amount > 0 && name.trim().length > 0 && /\S+@\S+\.\S+/.test(email);
+  const valid =
+    amount > 0 && name.trim().length > 0 && /\S+@\S+\.\S+/.test(email);
 
-  function handleSubmit(e: React.FormEvent) {
+  // When Paystack returns the donor to /donate?reference=..., verify the payment.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const reference = params.get("reference") ?? params.get("trxref");
+    if (!reference) return;
+
+    setVerifying(true);
+    fetch(`/api/donate/verify?reference=${encodeURIComponent(reference)}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.success) {
+          setVerified({ amount: data.amount ?? 0, name: data.name ?? "" });
+        } else {
+          setError("We couldn't confirm your payment. If you were charged, contact us and we'll sort it out.");
+        }
+      })
+      .catch(() =>
+        setError("We couldn't confirm your payment. Please try again."),
+      )
+      .finally(() => {
+        setVerifying(false);
+        // Clean the query string so a refresh doesn't re-verify.
+        window.history.replaceState(null, "", window.location.pathname);
+      });
+  }, []);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!valid) return;
-    setSubmitted(true);
+    if (!valid || loading) return;
+    setError(null);
+    setLoading(true);
+    try {
+      const res = await fetch("/api/donate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount, email, name, frequency, message }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.authorization_url) {
+        setError(data.error ?? "Something went wrong. Please try again.");
+        setLoading(false);
+        return;
+      }
+      // Hand off to Paystack's secure checkout (Mobile Money + card).
+      window.location.href = data.authorization_url;
+    } catch {
+      setError("Could not reach the payment service. Please try again.");
+      setLoading(false);
+    }
   }
 
   return (
@@ -40,12 +92,20 @@ export function DonationFormSection() {
               Three minutes. One real outcome.
             </h2>
             <p className="mt-6 text-base md:text-lg leading-body text-ink-muted">
-              Choose what works for you. Every gift is tax-deductible, processed
-              securely, and matched dollar-for-dollar by our partners through
-              June 30.
+              Choose what works for you. Pay securely with Mobile Money or a
+              Visa/Mastercard — every gift is matched cedi-for-cedi by our
+              partners through June 30.
             </p>
 
             <ul className="mt-8 space-y-3 text-sm text-ink-muted">
+              <li className="flex items-start gap-3">
+                <Smartphone size={16} className="mt-0.5 shrink-0 text-brand" />
+                Mobile Money — MTN, Telecel &amp; AirtelTigo.
+              </li>
+              <li className="flex items-start gap-3">
+                <CreditCard size={16} className="mt-0.5 shrink-0 text-brand" />
+                Visa &amp; Mastercard, processed securely by Paystack.
+              </li>
               <li className="flex items-start gap-3">
                 <Lock size={16} className="mt-0.5 shrink-0 text-brand" />
                 Encrypted, PCI-compliant processing.
@@ -53,10 +113,6 @@ export function DonationFormSection() {
               <li className="flex items-start gap-3">
                 <Heart size={16} className="mt-0.5 shrink-0 text-brand" />
                 You&apos;ll receive a receipt and your first impact update within 30 days.
-              </li>
-              <li className="flex items-start gap-3">
-                <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-brand" />
-                Cancel or change a recurring gift any time, no questions.
               </li>
             </ul>
           </Reveal>
@@ -66,12 +122,13 @@ export function DonationFormSection() {
               onSubmit={handleSubmit}
               className="rounded-3xl border border-line bg-bg p-7 shadow-sm md:p-10"
             >
-              {submitted ? (
+              {verifying ? (
+                <Verifying />
+              ) : verified ? (
                 <ThankYou
-                  amount={amount}
-                  frequency={frequency}
-                  name={name}
-                  onReset={() => setSubmitted(false)}
+                  amount={verified.amount}
+                  name={verified.name}
+                  onReset={() => setVerified(null)}
                 />
               ) : (
                 <>
@@ -95,12 +152,12 @@ export function DonationFormSection() {
                           )}
                           aria-pressed={preset === p}
                         >
-                          ${p}
+                          ₵{p}
                         </button>
                       ))}
                     </div>
                     <div className="mt-3 flex items-center gap-3 rounded-xl border border-line bg-surface px-4 focus-within:border-brand focus-within:shadow-ring">
-                      <span className="text-sm font-semibold text-ink-muted">$</span>
+                      <span className="text-sm font-semibold text-ink-muted">₵</span>
                       <input
                         id="amount"
                         type="number"
@@ -158,9 +215,18 @@ export function DonationFormSection() {
                     />
                   </Field>
 
+                  {error && (
+                    <p
+                      role="alert"
+                      className="mt-6 rounded-xl border border-accent/30 bg-accent-soft px-4 py-3 text-sm text-ink"
+                    >
+                      {error}
+                    </p>
+                  )}
+
                   <button
                     type="submit"
-                    disabled={!valid}
+                    disabled={!valid || loading}
                     className={cn(
                       "mt-8 inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-accent px-8 text-base font-semibold text-white shadow-sm",
                       "transition duration-200 ease-spring",
@@ -169,14 +235,23 @@ export function DonationFormSection() {
                       "disabled:opacity-60 disabled:pointer-events-none disabled:hover:scale-100"
                     )}
                   >
-                    <Heart size={18} />
-                    {amount > 0
-                      ? `Donate $${amount}${frequency === "monthly" ? " / month" : ""}`
-                      : "Donate"}
+                    {loading ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Redirecting to checkout…
+                      </>
+                    ) : (
+                      <>
+                        <Heart size={18} />
+                        {amount > 0
+                          ? `Donate ₵${amount}${frequency === "monthly" ? " / month" : ""}`
+                          : "Donate"}
+                      </>
+                    )}
                   </button>
 
                   <p className="mt-4 text-center text-xs text-ink-muted">
-                    Secured by Stripe · You&apos;ll receive a tax receipt by email.
+                    Secured by Paystack · Mobile Money &amp; card · You&apos;ll receive a receipt by email.
                   </p>
                 </>
               )}
@@ -260,14 +335,24 @@ function Input(props: React.InputHTMLAttributes<HTMLInputElement>) {
   );
 }
 
+function Verifying() {
+  return (
+    <div className="flex flex-col items-center py-6 text-center">
+      <Loader2 size={28} className="animate-spin text-brand" />
+      <p className="mt-4 text-base font-semibold text-ink">
+        Confirming your payment…
+      </p>
+      <p className="mt-2 text-sm text-ink-muted">This only takes a moment.</p>
+    </div>
+  );
+}
+
 function ThankYou({
   amount,
-  frequency,
   name,
   onReset,
 }: {
   amount: number;
-  frequency: Frequency;
   name: string;
   onReset: () => void;
 }) {
@@ -281,10 +366,10 @@ function ThankYou({
         Thank you, {first}.
       </h3>
       <p className="mx-auto mt-4 max-w-md text-base leading-body text-ink-muted">
-        Your gift of <span className="font-semibold text-ink">${amount}</span>
-        {frequency === "monthly" ? " per month " : " "}
-        is on its way to the field. We&apos;ll send a receipt and your first
-        impact update within 30 days.
+        Your gift of{" "}
+        <span className="font-semibold text-ink">₵{amount}</span> is on its way
+        to the field. We&apos;ll send a receipt and your first impact update
+        within 30 days.
       </p>
       <button
         type="button"

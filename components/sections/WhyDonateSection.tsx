@@ -7,7 +7,7 @@ import { Reveal } from "@/components/ui/Reveal";
 const reasons = [
   {
     icon: HandCoins,
-    title: "92¢ of every dollar goes to programs",
+    title: "92 pesewas of every cedi goes to programs",
     body: "We keep overhead under 8% by design. Independently audited every year — and we publish the books.",
   },
   {

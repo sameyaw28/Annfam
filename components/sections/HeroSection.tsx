@@ -105,26 +105,6 @@ function HeroIllustration() {
       />
 
       <HeroSlider />
-
-      <div className="absolute -left-6 top-10 hidden md:block rounded-2xl border border-line bg-surface p-4 shadow-lg max-w-[200px]">
-        <p className="text-xs uppercase tracking-[0.14em] text-brand font-semibold">
-          Year on year
-        </p>
-        <p className="mt-1 font-display text-2xl">+38%</p>
-        <p className="text-xs text-ink-muted leading-snug">
-          Children supported through scholarships
-        </p>
-      </div>
-
-      <div className="absolute -right-4 bottom-12 hidden md:flex items-center gap-3 rounded-2xl border border-line bg-surface p-3 pr-5 shadow-lg">
-        <span className="grid h-10 w-10 place-items-center rounded-xl bg-brand-soft text-brand">
-          <HeartHandshake size={20} />
-        </span>
-        <div className="text-xs">
-          <p className="font-semibold text-ink">$2.4M raised</p>
-          <p className="text-ink-muted">across 14 programs</p>
-        </div>
-      </div>
     </div>
   );
 }
