@@ -69,7 +69,7 @@ export function HeroSlider() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
-      aria-label="ANNFAM programs in the field"
+      aria-label="ANNFAM Foundation in the field"
     >
       {/* Sliding track — scrolls horizontally to the active slide */}
       <div

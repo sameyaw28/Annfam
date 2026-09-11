@@ -55,8 +55,8 @@ export function HeroSection() {
               Donate Today
               <ArrowRight size={18} />
             </Button>
-            <Button href="/programs" variant="secondary" size="lg">
-              Explore Programs
+            <Button href="/events" variant="secondary" size="lg">
+              Explore Events
             </Button>
           </div>
 
